@@ -27,6 +27,7 @@ You need the following gem libraries for the basic bot:
 ### Non-gem Dependencies
 You need the following non-gem libraries for the basic bot:
 1. sqlite3 `sudo apt install sqlite3`
+
 You need the following non-gem libraries for voice features:
 1. libsodium `sudo apt install libsodium`
 2. ffmpeg `sudo apt install ffmpeg`
