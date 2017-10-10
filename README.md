@@ -1,24 +1,44 @@
 # Toadbot
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/toady`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is a simple bot built in Ruby. Use if you want to be cool and also not losr.
 
-TODO: Delete this and the text above, and describe your gem
+## Simple Installation
+You can clone or download the repo.
+After that, navigate in a terminal to the bot folder and run:
+```bash
+bin/setup
+```
+This should automatically run the setup script in *bot folder*/bin. If not, see manual installation below.
 
-## Installation
+## Manual installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'toady'
+### Gems
+The bot has a gemfile for easy bundler install. If you want to easily install the dependencies for the bot, navigate in a terminal into the directory that resulted from cloning/downloading the bot and run:
+```bash
+sudo bundler install
 ```
 
-And then execute:
+Alternatively, you can install the gems manually.
+You need the following gem libraries for the basic bot:
+1. discordrb `gem install discordrb`
+2. sqlite3 `gem install sqlite3`
+3. sequel `gem install sequel`
 
-    $ bundle
+### Non-gem Dependencies
+You need the following non-gem libraries for the basic bot:
+1. sqlite3 `sudo apt install sqlite3`
+You need the following non-gem libraries for voice features:
+1. libsodium `sudo apt install libsodium`
+2. ffmpeg `sudo apt install ffmpeg`
+3. frei0r-plugins `sudo apt install frei0r-plugins`
 
-Or install it yourself as:
+## Setup
+When you have it on your *`computing device`*, navigate to `lib/toadbot` and create a new file called `client.yaml`. Inside the file, make two new lines and put text in the file like any good file would have:
 
-    $ gem install toady
+```yaml
+token: <your bot account token>
+client_id: <your bot client id>
+```
 
 ## Usage
 

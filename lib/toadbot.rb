@@ -90,10 +90,10 @@ module Toadbot
 
       user = User.new(user_init.id, event.server.id)
       msg = <<-EOF
-  `User: #{user_init.username}`
-  `Server: #{event.server.name}`
-  :star: **|** #{user.xp} / #{user.xp_needed} XP
-  :mushroom: **|** Level #{user.level}
+`User: #{user_init.username}`
+`Server: #{event.server.name}`
+:star: **|** #{user.xp} / #{user.xp_needed} XP
+:mushroom: **|** Level #{user.level}
       EOF
 
       event.respond msg
@@ -114,13 +114,13 @@ module Toadbot
       user = event.user if user == nil
 
       msg = <<-EOF
-  `User: #{user.username}`
-  ```Id       | #{user.id}
-  Distinct | #{user.distinct}
-  Game     | #{user.game}
-  Status   | #{user.status}
-  Webhook? | #{user.webhook?}```
-      EOF
+`User: #{user.username}`
+```Id       | #{user.id}
+Distinct | #{user.distinct}
+Game     | #{user.game}
+Status   | #{user.status}
+Webhook? | #{user.webhook?}```
+    EOF
 
       event.respond msg
     end
