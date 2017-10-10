@@ -23,9 +23,13 @@ module Toadbot
   require 'sqlite3'
   # Ruby style SQLite code api
   require 'sequel'
+  # Colored console msgs
+  require 'colored'
 
   # Internal requires
   #
+  # Error custom msg
+  require 'toadbot/error'
   # Config
   require 'toadbot/config'
   # Initial setup
@@ -34,18 +38,12 @@ module Toadbot
   require 'toadbot/user'
   # Xp module
   require 'toadbot/xp'
+  BOT.include! Xp
   # Utils module
   require 'toadbot/utils'
-  # Miscillanious module
-  require 'toadbot/misc'
-
-  user = User.new(0,0)
-  user.test
-
-  BOT.include! Xp
-
   BOT.include! Utils
-
+  # Miscellaneous module
+  require 'toadbot/misc'
   BOT.include! Misc
 
   BOT.run # Finally, run the bot

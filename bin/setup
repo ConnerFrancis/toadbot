@@ -4,8 +4,6 @@ IFS=$'\n\t'
 set -vx
 
 bundle install
-
-# Do any other automated setup that you need to do here
-
-echo 'If the bot fails to load, check the github for the manual installation guide.'
-echo 'You might have missing libraries from apt or other package managers.'
+echo '######'
+echo 'Make sure you have the necessary non gem packages!'
+echo '######'

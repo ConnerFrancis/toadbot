@@ -4,18 +4,22 @@ This is a simple bot built in Ruby. Use if you want to be cool and also not losr
 
 ## Simple Installation
 You can clone or download the repo.
-After that, navigate in a terminal to the bot folder and run:
+
+You will need some non-gem dependencies which are in **Manual Installation** below.
+
+For a simple install, navigate, in a terminal, to the bot folder and run:
 ```bash
-bin/setup
+sudo bin/setup
 ```
-This should automatically run the setup script in *bot folder*/bin. If not, see manual installation below.
+This should automatically run the setup script in `bot folder/bin`.
+If you get errors, or the script did not work, see **Manual Installation** below.
 
 ## Manual installation
 
 ### Gems
-The bot has a gemfile for easy bundler install. If you want to easily install the dependencies for the bot, navigate in a terminal into the directory that resulted from cloning/downloading the bot and run:
+The bot has a gemspec for easy bundler install. If you want to easily install the dependencies for the bot, navigate in a terminal into the directory that resulted from cloning/downloading the bot and run:
 ```bash
-sudo bundler install
+sudo bundle install
 ```
 
 Alternatively, you can install the gems manually.
@@ -34,12 +38,7 @@ You need the following non-gem libraries for voice features:
 3. frei0r-plugins `sudo apt install frei0r-plugins`
 
 ## Setup
-When you have it on your *`computing device`*, navigate to `lib/toadbot` and create a new file called `client.yaml`. Inside the file, make two new lines and put text in the file like any good file would have:
-
-```yaml
-token: <your bot account token>
-client_id: <your bot client id>
-```
+When you have it on your *`computing device`*, navigate to the `config` folder and go through and fill the file out. Make sure to enter all information.
 
 ## Usage
 

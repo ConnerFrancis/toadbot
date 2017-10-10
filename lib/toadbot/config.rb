@@ -3,21 +3,22 @@ module Toadbot
   # Config information stored in config.yaml
   # Access with frozen constant CONFIG
   class Config
-    attr_reader :file
-    attr_reader :token
-    attr_reader :client_id
-    attr_reader :prefix
-    attr_reader :level_increment
-    attr_reader :level_scale
+    # These should never have to be changed.
+    attr_reader :file, :token, :client_id, :prefix, :level_increment, :level_scale
 
     def initialize
       # Base file access
-      @file = YAML.load_file(__dir__ + '/config.yaml')
-      @client = YAML.load_file(__dir__ + '/client.yaml')
+      directory = File.expand_path('.')
+      file = directory + '/config/config.yaml'
+      puts "Config in #{file}"
+      @file = YAML.load_file(file)
 
       # Client information
-      @token = @client['token']
-      @client_id = @client['client_id']
+      @token = @file['token']
+      @client_id = @file['client_id']
+      # Raise custom errors if config token or client_id is missing
+      raise Error.new('Config', 'Missing token in config.yaml'.red) if @token == nil
+      raise Erorr.new('Config', 'Missing client id in config.yaml'.red) if @client_id == nil
 
       # Command prefix and chat confirmation
       @prefix = @file['prefix']
