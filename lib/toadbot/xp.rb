@@ -4,7 +4,7 @@ module Toadbot
   # Uses User class for storage.
   module Xp
     # Extend the Event and Command container
-    # 
+    #
     # Discordrb events
     extend Discordrb::EventContainer
     # Discordrb commands
@@ -39,7 +39,7 @@ module Toadbot
         # 6000 to get to lvl 3 at lvl 2
       end
 
-      User.update_xp(user.id, user.server_id, user.xp, user.xp_needed, user.level)
+      user.update
     end
 
     command(:set_rank, arg_types: [Discordrb::User], bucket: :command, rate_limit_message: 'chill for %time% seconds dawg no spam pls') do | event, user_init |
@@ -47,7 +47,8 @@ module Toadbot
 
       user_init = event.user if user_init == nil
 
-      user = User.new(user_init.id, event.server_id)
+      user = User.new(user_init.id, event.server.id)
+      user.test
 
     end
 

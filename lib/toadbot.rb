@@ -39,6 +39,9 @@ module Toadbot
   # Miscillanious module
   require 'toadbot/misc'
 
+  user = User.new(0,0)
+  user.test
+
   BOT.include! Xp
 
   BOT.include! Utils
