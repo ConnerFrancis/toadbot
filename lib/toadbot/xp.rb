@@ -43,7 +43,7 @@ module Toadbot
     end
 
     command(:set_rank, arg_types: [Discordrb::User], bucket: :command, rate_limit_message: 'chill for %time% seconds dawg no spam pls') do | event, user_init |
-      #
+      # Update user xp with certain input.
 
       user_init = event.user if user_init == nil
 
