@@ -45,6 +45,9 @@ module Toadbot
   # Miscellaneous module
   require 'toadbot/misc'
   BOT.include! Misc
+  # Voice/music module
+  require 'toadbot/voice'
+  BOT.include! Voice
 
   BOT.run # Finally, run the bot
 

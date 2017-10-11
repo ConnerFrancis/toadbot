@@ -10,6 +10,8 @@ module Toadbot
     # Discordrb commands
     extend Discordrb::Commands::CommandContainer
 
+    # Update XP for every message a user sends.
+    # 1 xp = 1 char
     message do | event |
       # stores xp and updates stats for each msg
       # 1 xp = 1 char in msg
