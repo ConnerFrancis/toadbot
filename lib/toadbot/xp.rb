@@ -54,21 +54,24 @@ module Toadbot
 
     end
 
+    # Rank; gets user info
     command(:rank, arg_types: [Discordrb::User], bucket: :command, rate_limit_message: 'chill for %time% seconds dawg no spam pls') do | event, user_init |
-      # get user rank, level, coins
-      # display nicely
 
+      # If no user given, set user to the user that ran the command.
       user_init = event.user if user_init == nil
 
+      # Create a new User instance.
       user = User.new(user_init.id, event.server.id)
+
+      # Set msg.
       msg = <<-EOF
 `User: #{user_init.username}`
 `Server: #{event.server.name}`
 :star: **|** #{user.xp} / #{user.xp_needed} XP
 :mushroom: **|** Level #{user.level}
       EOF
-
-      event.respond msg
+      # Simply returning the msg says it in chat.
+      msg
     end
   end
 end
