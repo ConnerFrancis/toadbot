@@ -7,7 +7,7 @@
 /pkg/
 /spec/reports/
 /tmp/
-/lib/toadbot/client.yaml
-
+# no no do not stele info pls
+/config/config.yaml
 # rspec failure tracking
 .rspec_status
