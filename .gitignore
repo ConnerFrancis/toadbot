@@ -9,5 +9,7 @@
 /tmp/
 # no no do not stele info pls
 /config/config.yaml
+# no no do not have db pls
+/lib/toadbot/database.db
 # rspec failure tracking
 .rspec_status
