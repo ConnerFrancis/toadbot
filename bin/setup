@@ -4,6 +4,10 @@ IFS=$'\n\t'
 set -vx
 
 bundle install
-echo '######'
-echo 'Make sure you have the necessary non gem packages!'
-echo '######'
+
+cd config
+cp config-example.yaml config.yaml
+
+cd ..
+cd lib/toadbot
+touch database.db
