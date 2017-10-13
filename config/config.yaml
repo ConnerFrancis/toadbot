@@ -1,0 +1,22 @@
+# Bot config for easy control.
+
+# Bot account info
+#
+# The bot account token
+token: 
+# The bot account client id
+client_id:
+
+# Discord interface
+#
+# The prefix bot commands in discord are prefaced by
+prefix: '.'
+
+# Xp and Levels
+#
+# Base increment (at lvl 0 it will require 1000 xp to lvl up)
+level_increment: 1000
+# The amount the xp increases per lvl; xp needed increases by level_scale * user_level
+# i.e. lvl 1, 2000
+# i.e. lvl 2, 4000
+level_scale: 1000
