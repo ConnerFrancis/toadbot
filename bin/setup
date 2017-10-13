@@ -1,13 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 IFS=$'\n\t'
-set -vx
+# set -vx
 
 bundle install
 
+echo ''
 cd config
 cp config-example.yaml config.yaml
+echo '+ config.yaml created, copied from config-example.yaml'
 
+echo ''
 cd ..
 cd lib/toadbot
 touch database.db
+echo '+ database.db created'
+
+echo ''
+echo 'Done! Run the bot with bin/console.'
+echo 'If you have any errors you cannnot fix, report on github.'
+echo ''
