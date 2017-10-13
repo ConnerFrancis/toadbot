@@ -8,8 +8,8 @@
 /spec/reports/
 /tmp/
 # no no do not stele info pls
-#/config/config.yaml
+/config/config.yaml
 # no no do not have db pls
-#/lib/toadbot/database.db
+/lib/toadbot/database.db
 # rspec failure tracking
 .rspec_status
