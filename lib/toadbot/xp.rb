@@ -44,16 +44,6 @@ module Toadbot
       user.update
     end
 
-    command(:set_rank, arg_types: [Discordrb::User], bucket: :command, rate_limit_message: 'chill for %time% seconds dawg no spam pls') do | event, user_init |
-      # Update user xp with certain input.
-
-      user_init = event.user if user_init == nil
-
-      user = User.new(user_init.id, event.server.id)
-      user.test
-
-    end
-
     # Rank; gets user info
     command(:rank, arg_types: [Discordrb::User], bucket: :command, rate_limit_message: 'chill for %time% seconds dawg no spam pls') do | event, user_init |
 

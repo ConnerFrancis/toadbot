@@ -48,6 +48,9 @@ module Toadbot
   # Voice/music module
   require 'toadbot/voice'
   BOT.include! Voice
+  # Admin module (eval, etc)
+  require 'toadbot/superadmin'
+  BOT.include! SuperAdmin
 
   BOT.run # Finally, run the bot
 
