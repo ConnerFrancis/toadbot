@@ -36,14 +36,10 @@ You need the following non-gem libraries for voice features:
 1. libsodium `sudo apt install libsodium`
 2. ffmpeg `sudo apt install ffmpeg`
 3. frei0r-plugins `sudo apt install frei0r-plugins`
-4. 
 
 ### Final steps
-You will need to create a config. In the `config` folder, you will need a `config.yaml`.
-Copy `config-example.yaml` and paste as `config.yaml`, or just edit the example and rename it.
-
-You will need to create a database. In `lib/toadbot`, create a blank database titled `database.db`
-You're ready now!
+1. You will need to create a config. In the `config` folder, you will need a `config.yaml`. Copy `config-example.yaml` and paste as `config.yaml`, or just edit the example and rename it.
+2. You will need to create a database. In `lib/toadbot`, create a blank database titled `database.db` You're ready now!
 
 ## Setup
 When you have it on your *`computing device`*, navigate to the `config` folder and go through and fill the file out. Make sure to enter all information.
@@ -60,7 +56,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/toady. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ConnerFrancis/toadbot. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
