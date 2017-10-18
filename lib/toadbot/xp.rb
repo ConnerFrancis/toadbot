@@ -78,5 +78,10 @@ module Toadbot
       # Simply returning the msg says it in chat.
       msg
     end
+    
+    # Set the user rank
+    command(:set_rank, bucket: :command, rate_limit_message: 'shut the front door for like %time% seconds dude') do | event |
+      'nutshack'
+    end
   end
 end
