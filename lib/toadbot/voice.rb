@@ -23,7 +23,7 @@ module Toadbot
       msg = <<-EOF
 `Error`
 You're not in a channel, #{user.nickname}. Please connect to a channel.
-You can also pass a user, i.e. `#{CONFIG.prefix}join @ur_mom`
+You can also pass a user, i.e. `#{CONFIG['prefix']}join @ur_mom`
       EOF
       # Give error message unless channel != nil
       # Say msg as error msg.

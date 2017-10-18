@@ -17,7 +17,7 @@ module Toadbot
       msg = ['eat my shorts', 'u cant tell me what to do', 'u dont know me', 'ur not my boss meaniebutt']
       # Cancel the command if the user id is not the owner id.
       # Also, send a pm to the user.
-      next event.user.pm msg.sample unless event.user.id == CONFIG.owner_id
+      next event.user.pm msg.sample unless event.user.id == CONFIG['owner_id']
       
       # Begin the sequence.
       begin

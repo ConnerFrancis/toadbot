@@ -1,41 +1,27 @@
 module Toadbot
 
   # Config information stored in config.yaml
-  # Access with frozen constant CONFIG
-  class Config
-    # These should never have to be changed.
-    attr_reader :file, :token, :client_id, :owner_id, :prefix, :level_increment, :level_scale
-
-    def initialize
-      # Base file access
-      directory = File.expand_path('.')
-      file = directory + '/config/config.yaml'
-      puts "Config in #{file}"
-      @file = YAML.load_file(file)
-
-      # Client information
-      @token = @file['token']
-      @client_id = @file['client_id']
-      @owner_id = @file['owner_id']
-      # Raise custom errors if config token or client_id is missing
-      raise Error.new('Config', 'Missing token in config.yaml'.red) if @token == nil
-      raise Erorr.new('Config', 'Missing client id in config.yaml'.red) if @client_id == nil
-
-      # Command prefix and chat confirmation
-      @prefix = @file['prefix']
-      puts 'Command prefix is " ' + @prefix + ' "'
-
-      # Level and xp information
-      @level_increment = @file['level_increment']
-      puts 'Level increment is ' + @level_increment.to_s
-      @level_scale = @file['level_scale']
-      puts 'Level scaling factor is ' + @level_scale.to_s
-
-      # Confirmation on load.
-      puts 'Config loaded!'
+  # Access with frozen constant CONFIG['key'] to get values
+  module Config
+    # Set some variables for setup.
+    #
+    # Directory is just the current directory, or the
+    # folder the bot is in. bin/console runs the bot
+    # from the bot master directory.
+    directory = File.expand_path('.')
+    # If file doesn't exist raise error.
+    raise Error.new('Config', 'config.yaml does not exist. Please run bin/setup or follow manual installation.') unless File.exist?('./config/config.yaml')
+    # The file we are loading is ./config/config.yaml
+    file = directory + '/config/config.yaml'
+    # Finally, define CONFIG constant.
+    # Also freeze it. (Good practices, amirite?)
+    # Also, CONFIG belongs to TOADBOT module, not Config. (Easier syntax)
+    Toadbot::CONFIG = YAML.load_file(file).freeze
+    # Iterate through each CONFIG pair.
+    # If any are blank, throw an error.
+    CONFIG.each do | key, value |
+      # If a value is nil, raise an error
+      raise Error.new('Config', "#{key} has an empty value.") unless value
     end
   end
-
-  # Set Config to CONFIG
-  CONFIG = Config.new.freeze
 end

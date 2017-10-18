@@ -16,13 +16,10 @@ module Toadbot
       @level = XP.where(:user_id => @id, :server_id => @server_id).get(:level)
     end
 
-    # Update_xp simply enters in the instance variables to the database.
+    # update simply enters in the instance variables to the database.
     # Users are differentiated by id and server_id, so it is server specific.
     def update
       XP.where(:user_id => @id, :server_id => @server_id).insert_conflict(:replace).insert(:user_id => @id, :server_id => @server_id, :xp => @xp, :xp_needed => @xp_needed, :level => @level)
-
-      puts 'Updated user ' + @id.to_s + ', xp: ' + @xp.to_s + ', xp_needed: ' + @xp_needed.to_s + ', level: ' + @level.to_s + ', server: ' + @server_id.to_s
-      # Updated user 000000, xp: 0, xp_needed: 0, level: 0, server: 00000
     end
 
     def test

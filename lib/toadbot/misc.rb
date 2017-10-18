@@ -23,7 +23,7 @@ module Toadbot
     end
 
     command(:invite, bucket: :command, rate_limit_message: 'chill for %time% seconds dawg no spam pls') do | event |
-      event.respond 'You can invite me with link: https://discordapp.com/oauth2/authorize?&client_id=' + CONFIG.client_id.to_s + '&scope=bot&permissions=0'
+      event.respond 'You can invite me with link: https://discordapp.com/oauth2/authorize?&client_id=' + CONFIG['client_id'].to_s + '&scope=bot&permissions=0'
     end
   end
 end

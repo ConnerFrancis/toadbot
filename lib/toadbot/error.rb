@@ -9,7 +9,7 @@ module Toadbot
 
     # Override standard error message
     def message
-      '[' + "#{@object}".underline + ']' + " #{@message}"
+      "[#{@object.underline}] #{@message.red}"
     end
   end
 end
