@@ -25,33 +25,45 @@ module Toadbot
   require 'sequel'
   # Colored console msgs
   require 'colored'
-
+  
   # Internal requires
   #
   # Error custom msg
   require 'toadbot/error'
-  # Config
-  require 'toadbot/config'
-  # Initial setup
-  require 'toadbot/init'
-  # User object
-  require 'toadbot/user'
-  # Xp module
-  require 'toadbot/xp'
-  BOT.include! Xp
-  # Utils module
-  require 'toadbot/utils'
-  BOT.include! Utils
-  # Miscellaneous module
-  require 'toadbot/misc'
-  BOT.include! Misc
-  # Voice/music module
-  require 'toadbot/voice'
-  BOT.include! Voice
-  # Admin module (eval, etc)
-  require 'toadbot/superadmin'
-  BOT.include! SuperAdmin
 
-  BOT.run # Finally, run the bot
+  # Inload, or include/load modules
+  def self.inload(m)
+    # Raise error if the file doesn't exist.
+    raise Error.new('Inload', "#{m} does not exist!") unless File.exist?("./lib/toadbot/#{m}.rb")
+    # Load module and give console confirmation.
+    load "toadbot/#{m}.rb"
+    puts "#{m} loaded.".green
+  end
+
+  # Internal loads
+  # aka inloads
+  #
+  # Config
+  inload('config')
+  # Initial setup
+  inload('init')
+  # User object
+  inload('user')
+  # Xp module
+  inload('xp')
+  # Utils module
+  inload('utils')
+  # Miscellaneous module
+  inload('misc')
+  # Voice/music module
+  inload('voice')
+  # Admin module (eval, etc)
+  inload('superadmin')
+  
+  BOT.run :async # Finally, run the bot
+  
+  # Run the console very last so everything
+  # can load.
+  inload('console')
 
 end # Toadbot

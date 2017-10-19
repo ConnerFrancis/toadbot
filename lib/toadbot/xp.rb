@@ -34,9 +34,9 @@ module Toadbot
       # user xp.
       user.xp = user.xp + event.content.length
 
-      # If the user has passed the required xp amount
+      # If the user has passed or is at the required xp amount
       # to level up:
-      if user.xp > user.xp_needed
+      if user.xp >= user.xp_needed
         # Increase the user level.
         user.level += 1
         event.respond ":exclamation: `#{event.user.username}` leved up to level `#{user.level}!`"
@@ -84,4 +84,6 @@ module Toadbot
       'nutshack'
     end
   end
+  
+  BOT.include! Xp
 end

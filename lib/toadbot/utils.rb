@@ -25,4 +25,6 @@ Webhook? | #{user.webhook?}```
       event.respond msg
     end
   end
+  
+  BOT.include! Utils
 end

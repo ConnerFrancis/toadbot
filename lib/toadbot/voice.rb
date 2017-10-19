@@ -31,11 +31,6 @@ You can also pass a user, i.e. `#{CONFIG['prefix']}join @ur_mom`
 
       # Finally, connect to the channel.
       BOT.voice_connect(channel)
-
-      # Set msg.
-      msg = <<-EOF
-I joined you in channel `#{channel.id}`, #{user.nickname}.
-      EOF
     end
 
     # Leave the voice channel.
@@ -49,4 +44,6 @@ I joined you in channel `#{channel.id}`, #{user.nickname}.
       'too lazy to add this cmd yet lmao'
     end
   end
+  
+  BOT.include! Voice
 end

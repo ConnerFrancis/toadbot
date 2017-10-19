@@ -4,11 +4,8 @@ module Toadbot
   # Miscillanious setup that doesn't merit an
   # entirely seperate module
   module Init
-    puts
-    
     # DB constant
     Toadbot::DB = Sequel.connect('sqlite://database.db')
-    puts 'Connected to database.db'.green
   
     # Create Xp table if it doesn't exist
     #
@@ -22,12 +19,8 @@ module Toadbot
   
     # Set bot to a CommandBot with the token and client_id from CONFIG
     Toadbot::BOT = Discordrb::Commands::CommandBot.new token: CONFIG['token'], client_id: CONFIG['client_id'], prefix: CONFIG['prefix']
-    puts 'CommandBot created'.green
   
     # Buckets (rate limiting)
     BOT.bucket :command, delay: 2
-    puts 'Command bucket created'.green
-    
-    puts
   end
 end

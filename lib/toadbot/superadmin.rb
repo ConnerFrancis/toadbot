@@ -29,4 +29,6 @@ module Toadbot
       end
     end
   end
+  
+  BOT.include! SuperAdmin
 end

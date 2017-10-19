@@ -26,4 +26,6 @@ module Toadbot
       event.respond 'You can invite me with link: https://discordapp.com/oauth2/authorize?&client_id=' + CONFIG['client_id'].to_s + '&scope=bot&permissions=0'
     end
   end
+  
+  BOT.include! Misc
 end
