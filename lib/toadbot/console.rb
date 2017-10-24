@@ -3,6 +3,9 @@ module Toadbot
   # A console for the bot
   # Used to manage stuff
   module Console
+    # Give a little bit o' space.
+    puts
+    
     # List of commands
     attr_reader :list
     @list = {}
@@ -41,14 +44,32 @@ module Toadbot
       
       # Define the calling method
       # This actually runs the newly defined command
-      def call(arguments)
-        return "Invalid number of arguments." unless arguments.count == @arguments.count
+      def call(given_args)
+        # If the arguments given aren't equal to how many
+        # arguments you need, give console error and quit.
+        unless given_args.count == @arguments.count
+          puts 'Invalid number of arguments.'
+          puts "Provided: #{given_args.count} | Needed: #{@arguments.count}"
+          return
+        end
+        
+        # Argument parsing
+        #
+        # Iterate and assign each argument given
+        # to the corresponding arg value.
+        @arguments.each do | arg, value |
+          # Push the first argument to the c.arguments hash.
+          @arguments[arg] = given_args.first
+          # Drop the first value in arguments to make the
+          # next one the first value so it continues properly.
+          given_args.shift
+        end
         
         # Call it, boi
         #
         # Arguments in () are
         # accessable in | |
-        @block.call('no')
+        @block.call(@arguments)
       end
     end
     
@@ -62,8 +83,8 @@ module Toadbot
     end
     
     # | | operators get block.call() arguments
-    command(:say, {string: nil, color: nil}) do | s |
-      puts s
+    command(:say, {string: nil, color: nil}) do | args |
+      puts args[:string]
     end
     
     command(:exit) do
@@ -94,8 +115,6 @@ module Toadbot
     #   end
     # end
     
-    puts @list
-    
     # This loop always runs and constantly
     # gets the option from the user.
     loop do
@@ -104,6 +123,7 @@ module Toadbot
       #
       # i.e.:
       # say hello it me
+      print '> '
       command = gets.chomp
       
       # Split the words into individual values
@@ -112,28 +132,29 @@ module Toadbot
       # i.e.:
       # {'say', 'hello', 'it', 'me'}
       command = command.split
-      
       # They command keyword is the first
       # value of the command array
-      keyword = command.first
-      # The arguments are the next pieces
-      # after the keywords
-      # Only do this is arguments isn't nil.
-      arguments = command.drop(1)
-      puts arguments
-      puts "its nil dawg" unless arguments
+      keyword = command.first.to_sym
+      # Shift command so it removes the first portion
+      # This only returns args and not the command word
+      command.shift
       
-      # Iterate through the command list
-      # If it matches, call the command
-      @list.each do | key, c |
-        # "key" is the command symbol, i.e. :say
-        # "c" is the Command object instance
-        if keyword.to_s == c.name.to_s
-          c.call(arguments)
-        end
+      # Call the command. If it isn't found
+      # give console error.
+      begin
+        # Simply call the command.
+        # Pass the arguments, or shifted command, as
+        # the given_args to the call.
+        @list[keyword].call(command)
+      rescue
+        # Tell user the command doesn't exist
+        puts "Unknown command '#{keyword}'."
       end
     end
     # end of loop
+    
+    # End of the console code.
+    
   end
   # end of Console
 end
